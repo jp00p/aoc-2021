@@ -2000,13 +2000,18 @@ day1_input = '''137
 10194'''.split('\n')
 
 day1_input = [int(i) for i in day1_input]
-
+input_length = len(day1_input)-1
 increases = 0
-last_val = day1_input[0]
+last_val = day1_input[0] + day1_input[1] + day1_input[2] # first frame
 
-for depth in day1_input:
-    if depth > last_val:
+for index in range(0, input_length):
+    frame = day1_input[index]
+    if index+1 <= input_length:
+        frame += day1_input[index+1]
+    if index+2 <= input_length:
+        frame += day1_input[index+2]
+    if frame > last_val:
         increases += 1
-    last_val = depth
-
+    last_val = frame
+     
 print(f'Total increases: {increases}')
