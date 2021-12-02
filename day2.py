@@ -1001,17 +1001,19 @@ forward 6'''.split("\n")
 
 depth = 0
 hozpos = 0
+aim = 0
 
 for pos in day2_input:
     command,amount = pos.split(" ")
     amount = int(amount)
+    
+    if command == "down":
+        aim += amount
+    if command == "up":
+        aim -= amount
     if command == "forward":
         hozpos += amount
-    if command == "down":
-        depth += amount
-    if command == "up":
-        depth -= amount
-    print(hozpos)
+        depth += aim * amount
 
 result = hozpos * depth
 
